@@ -73,8 +73,14 @@
 
     .small-note {
       font-size: 14px;
-      opacity: 0.8;
+      opacity: 0.85;
       margin-top: 18px;
+      line-height: 1.5;
+    }
+
+    .cash-tag {
+      color: #22c55e;
+      font-weight: bold;
     }
 
     .back-btn {
@@ -82,7 +88,6 @@
       display: block;
       color: white;
       text-decoration: underline;
-      cursor: pointer;
     }
   </style>
 </head>
@@ -115,13 +120,14 @@
       id="cashAppButton"
       class="cash-button"
       href="https://cash.app/$ezcashin"
-      target="_blank"
+      onclick="openCashApp()"
     >
       Send $1 on Cash App →
     </a>
 
     <p class="small-note">
-      This will open my Cash App page. Please enter the amount you picked above.
+      This should open Cash App directly to <span class="cash-tag">$ezcashin</span>.
+      If it does not, type <span class="cash-tag">$ezcashin</span> in the “To” box.
     </p>
 
     <a class="back-btn" href="index.html">← Back Home</a>
@@ -137,6 +143,10 @@
       amountText.textContent = "$" + amount;
       cashAppButton.textContent = "Send $" + amount + " on Cash App →";
     });
+
+    function openCashApp() {
+      window.location.href = "cashapp://pay?recipient=$ezcashin";
+    }
   </script>
 
 </body>
