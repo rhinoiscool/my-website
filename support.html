@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Support Me</title>
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #111827, #1e293b, #7c2d12);
+      margin: 0;
+      color: white;
+      text-align: center;
+    }
+
+    /* NAV */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 40px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: underline;
+      margin-right: 20px;
+      font-size: 18px;
+    }
+
+    /* SUPPORT BOX */
+    .support-box {
+      background: linear-gradient(135deg, #1e293b, #334155);
+      padding: 50px;
+      border-radius: 25px;
+      max-width: 500px;
+      margin: 100px auto;
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    #amountText {
+      font-size: 50px;
+      color: #22c55e; /* Cash App green */
+      margin: 20px 0;
+    }
+
+    .money-slider {
+      width: 80%;
+      margin: 30px 0;
+      accent-color: #22c55e;
+    }
+
+    button {
+      background: #22c55e;
+      color: white;
+      border: none;
+      padding: 15px 35px;
+      border-radius: 30px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #16a34a;
+      transform: scale(1.05);
+    }
+
+    .back-btn {
+      margin-top: 30px;
+      display: inline-block;
+      color: white;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="jordan-shooting.jpg" width="300">
+  <!-- NAV -->
+  <div class="navbar">
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+    </div>
+  </div>
+
+  <!-- SUPPORT BOX -->
+  <div class="support-box">
+    <h1>Support Me</h1>
+    <p>Choose how much you want to support:</p>
+
+    <h2 id="amountText">$1</h2>
+
+    <input 
+      type="range" 
+      min="1" 
+      max="100" 
+      value="1" 
+      class="money-slider" 
+      id="moneySlider"
+    >
+
+    <br>
+    <a href="support.html">Support Me</a>
+    <button id="supportButton" onclick="supportNow()">
+      Send $1 on Cash App →
+    </button>
+
+    <div class="back-btn" onclick="goHome()">← Back Home</div>
+  </div>
+
+  <script>
+    const slider = document.getElementById("moneySlider");
+    const amountText = document.getElementById("amountText");
+    const button = document.getElementById("supportButton");
+
+    slider.addEventListener("input", function() {
+      const amount = slider.value;
+      amountText.textContent = "$" + amount;
+      button.textContent = "Send $" + amount + " on Cash App →";
+    });
+
+    function supportNow() {
+      window.open("https://cash.app/$ezcashin", "_blank");
+    }
+    
+    function goHome() {
+      window.location.href = "index.html";
+    }
+  </script>
+
+</body>
+</html>
